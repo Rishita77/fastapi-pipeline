@@ -21,8 +21,10 @@ def enrich_data(df: DataFrame) -> DataFrame:
     return df
 
 def filter_anomalies(df: DataFrame) -> DataFrame:
-    threshold = df["total_value"].mean() + (3 * df["total_value"].std())
-    cleaned = df[df["total_value"] <= threshold].copy()
+    if len(df) < 2:
+        return df
+    threshold = df["total_sales"].mean() + (3 * df["total_sales"].std())
+    cleaned = df[df["total_sales"] <= threshold]
     return cleaned
 
 def process_pipeline(records: List[SalesRecord]) -> DataFrame:
