@@ -5,19 +5,9 @@ from typing import Optional
 class SalesRecord(BaseModel):
     sale_date: str
     product_name: str
-    quantity: int
-    price: float
+    quantity: int = Field(0, ge=0, description="Quantity must be a non-negative integer")
+    price: float = Field(1, gt=0, description="Price must be a positive number")
     region: str
-    
-    def quantity_must_be_positive(cls, value):
-        if value <= 0:
-            raise ValueError('Quantity must be a positive integer')
-        return value
-    
-    def price_must_be_positive(cls, value):
-        if value <= 0:
-            raise ValueError('Price must be a positive number')
-        return value
     
 class ProcessedRecord(BaseModel):
     id: int
