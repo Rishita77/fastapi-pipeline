@@ -10,6 +10,7 @@ transforms, stores, and returns fully typed responses.
 - CSV file upload with row-level validation
 - SQLite persistence via SQLAlchemy (swap to Postgres with one line)
 - Dependency injection for database sessions
+- Docker container support added to the app
 
 ## Quickstart
 ```bash
